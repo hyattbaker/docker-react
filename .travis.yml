@@ -5,10 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
+  - docker build -t hyattbaker/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true stephengrider/docker-react npm run test
+  - docker run -e CI=true hyattbaker/docker-react npm run test
 
 deploy:
   provider: elasticbeanstalk
@@ -19,7 +19,6 @@ deploy:
   bucket_path: "docker-react"
   on: 
     branch:master
-  
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: 
     secure: "$AWS_SECRET_KEY"
